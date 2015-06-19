@@ -1,1 +1,52 @@
 \chapter{Mobile Apps mit Xamarin}
+
+Mit Xamarin lässt sich eine gemeinsame Codebasis in C\# für Android, iOS, OSX und Windows verwenden. Die native API wird vollständig in C\# abgebildet und daraus werden dann native Apps erzeugt. Es können die gewohnten Tools (Visual Studio, Resharper usw.) und die meisten .NET-Libraries verwendet werden.
+Von Xamarin werden verschiedene Produkte angeboten:
+\begin{description}
+	\item[Xamarin Platform:] Apps in C\# für iOS, Android und Windows Phone erstellen.
+	\item[Xamarin Test Cloud:] Teste deine App automatisch auf hunderten von mobilen Geräten.
+	\item[Xamarin Insights:] Real-time Monitoring
+	\item[Xamarin University:] Training für App-Entwicklung
+\end{description}
+Die Preise für die Xamarin Platform gehen von der kostenlosen Starter-Paket bis zum 1'899\$ im Jahr teuren Enterprise-Paket. Die Xamarin Testcloud kostet zwischen 1'000\$ bis 12'000\$ pro Monat.
+
+\section{Architektur}
+
+Der C\# Code wird zu iOS nativem Code mit der Ahead of Time (AOT) Methode kompiliert. Bei AOT wird der Code vor der Ausführung in Maschinencode übersetzt, was Geschwindigkeitsvorteile bringt. Um den C\# Code nach Android zu kompilieren, wird die Just in Time (JIT) Methode verwendet. Bei Xamarin wird aller plattformunabhängige Code (Model, Businesslogik) in einer gemeinsamen Code-Basis (Core) verwaltet. Für das UI wird für jede Plattform ein separates Projekt angelegt. Um den gemeinsamen Code zu teilen gibt es in Xamarin drei Möglichkeiten:
+\begin{description}
+	\item[File Linking] \hfill \\
+	Ein physikalisches File wird mit anderen Projekten verknüpft. Jede Änderung in einer Verknüpfung wird in allen anderen Verknüpfungen und im Original sichtbar. Ist veraltet, weil zu unübersichtlich.
+	\item[Shared Project] \hfill \\
+	Das Shared Project wird in allen Plattform-Projekten verwendet. Mit Compiler-Anweisungen wird der plattformspezifische Code markiert. Diese Lösung ist gut wenn Entwickler ihren Code nur innerhalb der App teilen wollen.
+	\item[Portable Class Library] \hfill \\
+	Es wird eine Bibliothek erstellt und festgelegt welche Plattformen unterstützt werden sollen. Das plattformspezifische Verhalten wird über ein Interface implementiert. Diese Lösung ist gut wenn der Code zwischen verschiedenen Apps geteilt werden soll.
+\end{description}
+Wie oben erwähnt ist im gemeinsamen Code meist die Businesslogik und das Model enthalten. Die View wird pro Plattform entwickelt. Diese Herangehensweise eignet sich für Apps mit wenig gemeinsamen Code und anspruchsvollen UIs. Mit Xamarin Forms wird auch die View in die gemeinsame Codebasis verschoben. Im plattformspezifischen Teil befindet sich nur noch ein Bootstraper um die View aufzubauen. Diese Herangehensweise eignet sich für Apps mit geringem plattformspezifischen Funktionalität und für Prototypen.
+MvvmCross ist eine Bibliothek, mit der die UI-Abstraktion (View Models) im gemeinsamen Code sind und zusätzlich noch Funktionen angeboten werden die Xamarin Forms nicht bietet (DI, Plugins usw.).
+
+\section{Testing}
+
+Xamarin unterstützt Unit Tests für plattformunabhängigen Code über die gängigen xUnit-Frameworks (NUnit, MSTest usw.). Für plattformspezifischen Code unterstützt Xamarin das NUnitLite Framework. Damit lassen sich Unit Tests auf dem Gerät oder einem Simulator ausführen.
+
+Für Akzeptanztests bietet Xamarin zwei Frameworks:
+\begin{description}
+	\item[Xamarin UITest:] C\#, kostenpflichtig, NUnit
+	\item[Calabash:] Gherkin / Ruby, Open Source, Cucumber
+\end{description}
+Xamarin UITest ermöglicht automatisierte, plattformübergreifende UI Tests für native Apps (= Xamarin Apps) oder hybride Apps. Tests werden in C\# geschrieben und mit NUnit ausgeführt:
+\begin{verbatim}
+	app.Tap(c => c.Marked("Add"));
+	app.EnterText(c => c.Class("UITextField").Index(0), "Get Milk");
+	app.Tap(c => c.Marked("Save"));
+\end{verbatim}
+
+Calabash ermöglicht automatisierte, plattformübergreifende UI Tests für ebenfalls native und hybride Apps. Szenarien werden in Gherkin Syntax definiert, Test Implementation mit Ruby geschrieben und Tests mit Cucumber ausgeführt.
+
+\begin{verbatim}
+	Feature: Management of tasks
+		Scenario: Delete an existing task
+			Given I am on the Task Details screen for the ”Get Milk" task
+			When I press the Delete button
+			Then I should be on the TaskyPro screen
+			And I should not see the "Get Milk" task in the list
+\end{verbatim}
