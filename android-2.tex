@@ -1,4 +1,4 @@
-\chapter{Android 2 - Benutzerschnittstellen}
+\chapter{Benutzerschnittstellen}
 
 \section{Komponenten und Layouting}
 
@@ -25,37 +25,37 @@ Alle Ressourcen werden im Verzeichnis \texttt{res/} abgelegt. In diesem Verzeich
 Jedes View-Element hat eine entsprechende Java-Klasse. Die Views werden im Code mit einer ID über die R-Klasse identifiziert, welche im XML definiert wurde. Für das Event Handling wird das Observer-Pattern verwendet, welches schon aus der Java-Welt bekannt ist (Listener für entsprechenden Event bei View registrieren). Abbildung \ref{fig:event-java} zeigt wie eine Button-ID im layout.xml definiert wird und der entsprechende Listener im Code registriert wird.
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/event-java-id}
-		\caption{Expliziter Intent senden}
+		\caption{\texttt{id} definieren}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/event-java-listener}
-		\caption{Expliziter Intent empfangen}
+		\caption{Button über \texttt{R}-Klasse holen}
 	\end{subfigure}
-	\caption{Intents aufrufen}
+	\caption{Eventhandler Java}
 	\label{fig:event-java}
 \end{figure}
 Es ist auch möglich direkt im XML eine Methode als Listener zu registrieren (Abbildung \ref{fig:event-xml}).
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/event-xml-onclick}
-		\caption{Expliziter Intent senden}
+		\caption{\texttt{onClick} definieren}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/event-xml-method}
-		\caption{Expliziter Intent empfangen}
+		\caption{Aufgerufene Methode}
 	\end{subfigure}
-	\caption{Intents aufrufen}
+	\caption{Eventhandler XML}
 	\label{fig:event-xml}
 \end{figure}
 
 \section{Options-Menu}
 
-Android-Apps können in der Action-Bar rechts oben ein Menu mit Optionen pro Activity anbieten (seit Android 3 kein HW-Button mehr nötig). Das Menu wird in der Activity-Methode \texttt{onCreateOptionsMenu(Menu menu)} erzeugt. Bei einem Klick auf einen Menu-Eintrag wird \texttt{onOptionsItemSelected(MenuItem item)} aufgerufen. Für die Erzeugung sind folgende Schritte notwendig:
+Android-Apps können in der Action-Bar rechts oben ein Menu mit Optionen pro Activity anbieten (seit Android 3 kein HW-Button mehr nötig). Das Menu wird in der Activity-Methode \texttt{onCreateOptionsMenu(Menu menu)} erzeugt. Bei einem Klick auf einen Menu-Eintrag wird \\ \texttt{onOptionsItemSelected(MenuItem item)} aufgerufen. Für die Erzeugung sind folgende Schritte notwendig:
 \begin{enumerate}
 	\item Ordner \texttt{res/menu} mit .xml-Datei anlegen (Dateiname z.B. main\_menu.xml)
 	\item Menu und Items in XML definieren
@@ -64,21 +64,21 @@ Android-Apps können in der Action-Bar rechts oben ein Menu mit Optionen pro Act
 Abbildung \ref{fig:option-menu} zeigt den gesamten Ablauf nochmals als Code-Beispiel.
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/option-menu-xml}
-		\caption{Expliziter Intent senden}
+		\caption{Option Menu in XML}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/option-menu-create}
-		\caption{Expliziter Intent empfangen}
+		\caption{Menu aufblasen}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/option-menu-event}
-		\caption{Expliziter Intent empfangen}
+		\caption{Option auswählen}
 	\end{subfigure}
-	\caption{Intents aufrufen}
+	\caption{Options-Menu}
 	\label{fig:option-menu}
 \end{figure}
 
@@ -97,16 +97,16 @@ Es gibt unter anderem folgende AdapterViews:
 Bei jedem Konfigurationswechsel wird die aktuelle Activity zerstört und neu aufgebaut (z.B. Wechsel der Bildschirmorientierung). Dabei werden alle nicht sichtbareren Zustände (z.B. Instanzvariablen) verloren. Deshalb sollten Activities keine Zustände haben sondern diese in Services ausgelagert werden. Schlüssel-Werte-Paare können auch kurzfristig in-memory gespeichert werden. Abbildung \ref{fig:instance-state} zeigt ein Code-Beispiel um das Verhalten umzusetzen.
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/save-instance}
-		\caption{Expliziter Intent senden}
+		\caption{Daten speichern}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/restore-instance}
-		\caption{Expliziter Intent empfangen}
+		\caption{Daten laden}
 	\end{subfigure}
-	\caption{Intents aufrufen}
+	\caption{Temporäre Datenspeicherung}
 	\label{fig:instance-state}
 \end{figure}
 

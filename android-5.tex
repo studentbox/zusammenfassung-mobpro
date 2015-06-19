@@ -19,17 +19,17 @@ Ein impliziter Intent enthält folgende Informationen:
 Die oben genannten Informationen werden auch bei einem Intent-Filter im Manifest definiert. Ein Intent-Filter kann einer Activity oder einem Service zugeordnet werden. Das System vergleicht nun den Action, die Category und das Data mit den Intent-Filtern und an dessen Intent-Filter wo alles übereinstimmt, wird der Intent zur Verarbeitung übergeben. Abbildung \ref{fig:impliziter-intent} zeigt wie ein impliziter Intent mit Action und Data erzeugt wird. Das Bild in der Mitte erklärt wie der entsprechende Intent-Filter im Manifest deklariert wird. Das letzte Bild zeigt wie die Daten eines Intents in der dazugehörigen Activity ausgelesen werden.
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/impliziter-intent-aufruf}
 		\caption{Aufruf eines impliziten Intents}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/impliziter-intent-xml}
 		\caption{Deklaration Intent-Filter}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/impliziter-intent-activity}
 		\caption{Daten vom Intent auslesen}
 	\end{subfigure}
@@ -49,7 +49,7 @@ Fragments sind eine Art \emph{Sub-Activity}, welche in verschiedenen Activities 
 \label{fig:fragment-design}
 \end{figure}
 
-Der Lebenszyklus von Fragments ist ähnlich wie der von Activities. Fragments können deklariert werden (layout.xml) oder programmatisch erzeugt werden. Der FragmentManager (\texttt{getFragementManager()}) verwaltet die Fragments innerhalb einer Activity. Abbildung \ref{fig:fragement-aufblasen} zeigt wie ein Fragment mit dem \texttt{LayoutInflater} erzeugt wird.
+Der Lebenszyklus von Fragments ist ähnlich wie der von Activities. Fragments können deklariert werden (layout.xml) oder programmatisch erzeugt werden. Der FragmentManager \\ (\texttt{getFragementManager()}) verwaltet die Fragments innerhalb einer Activity. Abbildung \ref{fig:fragement-aufblasen} zeigt wie ein Fragment mit dem \texttt{LayoutInflater} erzeugt wird.
 
 \begin{figure}
 \centering
@@ -62,12 +62,12 @@ Fragments können dynamisch per Code oder deklarativ per XML zu einer Activity h
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/fragement-activity-code}
 		\caption{\texttt{FragementManager}}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/fragement-activity-xml}
 		\caption{XML}
 	\end{subfigure}
@@ -97,21 +97,21 @@ Abbildung \ref{fig:widget} zeigt diese Schritte nochmals im Detail.
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/widget-manifest}
 		\caption{Widget im Manifest eintragen}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/widget-info}
 		\caption{Metadaten deklarieren}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/widget-layout}
 		\caption{Layout definieren}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.4\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/widget-klasse}
 		\caption{Aktualisierung}
 	\end{subfigure}

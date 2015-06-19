@@ -16,17 +16,17 @@ Der Service bleibt so lange im RUNNING Zustand bis er explizit beendet wird. Abb
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/service-starten}
 		\caption{Service starten}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/service-stoppen}
 		\caption{Service stoppen}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/service-implementierung}
 		\caption{Service Implementierung}
 	\end{subfigure}
@@ -38,7 +38,7 @@ Wenn ein Service von der Klasse \texttt{Service} ableitet, muss die Methode \tex
 Wenn ein Service von der Klasse \texttt{IntentService} ableitet, muss die Methode \texttt{onHandleIntent()} implementiert werden. Wird der Service aufgerufen erfolgt der neue Auftrag erst, wenn der vorige Job abgeschlossen ist. Demzufolge läuft die Methode \texttt{onHandleIntent()} automatisch in einem Worker-Thread.
 Mit dem Rückgabewert von der Methode \texttt{onStartCommand()} kann das Verhalten des Service definiert werden, wenn die Applikation zerstört und später wiederhergestellt wird (nicht wichtig für gebundene Services weil existieren so lange wie Binding). Es gibt folgende Rückgabewerte:
 \begin{description}
-	\item[START\_STICKY:] Service soll nach Wiederherstellung automatisch gestartet werden - \texttt{onStartCommand()} wird erneut aufgerufen, aber ohne Intent
+	\item[START\_STICKY:] Service soll nach Wiederherstellung automatisch gestartet werden -- \\ \texttt{onStartCommand()} wird erneut aufgerufen, aber ohne Intent
 	\item[START\_NOT\_STICKY:] Service wird nicht automatisch neu gestartet nach Wiederherstellung
 	\item[START\_REDELIVER\_INTENT:] Wie START\_STICKY, aber der ursprüngliche Intent wird noch einmal ausgeliefert, damit parametrisierte Reinitialisierung möglich
 \end{description}
@@ -75,17 +75,17 @@ Broadcast sind Systemnachrichten welche vom Android-System verschickt werden (z.
 
 \begin{figure}
 	\centering
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/broadcast-receiver-manifest}
 		\caption{Deklarieren im Manifest}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/broadcast-receiver-manifest-klasse}
 		\caption{Dedizierte Klasse}
 	\end{subfigure}
 	~
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/broadcast-receiver-dynamisch}
 		\caption{Dynamisch registrieren}
 	\end{subfigure}
