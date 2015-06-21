@@ -2,7 +2,7 @@
 
 \section{Preferences}
 
-Mittels Preferences können Schlüssel-Werte-Paare abgelegt werden. Es können die Datentypen \texttt{String}, \texttt{int}, \texttt{long}, \texttt{float}, \texttt{boolean} und \texttt{Set<String>} abgelegt werden. Es gibt drei verschiedene Preferences:
+Mittels Preferences können Schlüssel-Werte-Paare gespeichert werden. Es können die Datentypen \texttt{String}, \texttt{int}, \texttt{long}, \texttt{float}, \texttt{boolean} und \texttt{Set<String>} abgelegt werden. Es gibt drei verschiedene Preferences:
 \begin{description}
 	\item[Default Shared Preferences:] 1 x pro App, d.h. geteilt von allen Activities \\ \texttt{PreferenceManager.getDefaultSharedPreferences(this)}
 	\item[Custom Shared Preferences:] Beliebig viele Instanzen möglich (mit eigenen Namen) \\ \texttt{getSharedPreferences("myPrefs", MODE\_PRIVATE)}

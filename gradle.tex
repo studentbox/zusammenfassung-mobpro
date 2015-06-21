@@ -30,9 +30,7 @@ Gradle Buildskripts enthalten Task-Definitionen, Konfigurationen von Modellobjek
 	\item Konfiguration des Builds (Erstellung Abhängigkeitsgraph)
 	\item Ausführung des Builds (d.h. von spezifischen Tasks)
 \end{enumerate}
-Ein Gradle-Skript kann Plugins anwenden. Plugin wird als Abhängigkeit hinzugefügt (im \texttt{buildscript}-Block)und mit \texttt{apply} aktiviert. Plugins definieren neue Modellobjekte, fügen einem Projekt weitere Tasks hinzu und konfigurieren Buildparameter gemäss Konventionen.
-
-Das Android Plugin definiert u.a. die folgenden Tasks:
+Ein Gradle-Skript kann Plugins anwenden. Plugin wird als Abhängigkeit hinzugefügt (im \texttt{buildscript}-Block)und mit \texttt{apply} aktiviert. Plugins definieren neue Modellobjekte, fügen einem Projekt weitere Tasks hinzu und konfigurieren Buildparameter gemäss Konventionen. Das Android Plugin definiert u.a. die folgenden Tasks:
 \begin{itemize}
 	\item \texttt{assemble}
 	\item \texttt{check} $\rightarrow$ \texttt{lint}

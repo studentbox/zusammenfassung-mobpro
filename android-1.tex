@@ -5,9 +5,9 @@
 Applikationen basieren auf lose gekoppelten Komponenten, welche wiederverwendet und ersetzt werden können. Das System verwaltet Applikationen, d.h. die einzelnen Komponenten einer Applikation (Kontrolle mittels Intents, Komponenten-Rechte, Lebenszyklus). Eine Applikation ist aufgebaut aus ihren eigenen Komponenten. Eine Applikation kann jedoch auch existierende Komponenten von anderen Applikationen verwenden (z.B. Mail-App kann Bilder über externe Gallery auswählen). Unter Android gibt es folgende Komponenten:
 \begin{description}
 	\item[Activity:] UI-Komponente, entspricht typischerweise einem Bildschirm
-	\item[Service] Komponente ohne UI, welche im Hintergrund läuft
-	\item[Broadcast Receiver] „Event-Handler“, welche auf Broadcast-Nachrichten (Intents) reagieren
-	\item[Content Provider] Komponente, welche Daten-Austausch zwischen verschiedenen Applikationen ermöglicht
+	\item[Service:] Komponente ohne UI, welche im Hintergrund läuft
+	\item[Broadcast Receiver:] Event-Handler, welche auf Broadcast-Nachrichten (Intents) reagieren
+	\item[Content Provider:] Komponente, welche Daten-Austausch zwischen verschiedenen Applikationen ermöglicht
 \end{description}
 Alle Komponenten einer Applikation müssen dem System bekannt gegeben werden. Zu diesem Zweck hat jede Android-Applikation eine
 Datei \texttt{AndroidManifest.xml}. Das \texttt{AndroidManifest.xml} hat u.a. folgenden Inhalt:
@@ -25,7 +25,7 @@ Datei \texttt{AndroidManifest.xml}. Das \texttt{AndroidManifest.xml} hat u.a. fo
 Android benutzt Intents, um Komponenten zu benachrichtigen oder um Kontrolle zu übergeben (Offene Kommunikation: Sender weiss nicht, ob Empfänger existiert). Dem Intent können Parameter als Strings (untypisiert) mitgegeben werden. Parameter werden vom Empfänger geprüft, geparst und interpretiert (oder ignoriert). Es gibt zwei Arten von Intents:
 \begin{description}
 	\item[Explizite Intents] adressieren Komponente direkt (mit Klassenname z.B. \texttt{ch.hslu.MainActivity})  
-	\item[Implizite Intents:] beschreiben den gewünschten Empfänger (z.B.: VIEW, CALL, PLAY, ...) und System sucht am besten passende Komponente
+	\item[Implizite Intents] beschreiben den gewünschten Empfänger (z.B.: VIEW, CALL, PLAY, ...) und das System sucht die am besten passende Komponente
 \end{description}
 \begin{figure}
 	\centering
@@ -48,7 +48,7 @@ Android benutzt Intents, um Komponenten zu benachrichtigen oder um Kontrolle zu 
 	\end{subfigure}
 	\caption{Intents aufrufen}
 \end{figure}
-Eine Activity kann auf Rückgabewerte einer anderen Activity (= Sub-Activity) warten. Nachfolgend ist dieser Ablauf beschrieben:
+Eine Activity kann auf den Rückgabewerte einer anderen Activity (= Sub-Activity) warten. Nachfolgend ist dieser Ablauf beschrieben:
 \begin{enumerate}
 	\item Aufruf der SubActivity mit \texttt{startActivityForResult(intent, requestId)}
 	\item SubActivity setzt am Ende Resultat mit \texttt{setResult(resultCode, intent)}
@@ -62,8 +62,8 @@ Das System kann eine Applikation pausieren oder stoppen, wenn der Speicher knapp
 Eine Activity kann folgende Zustände haben:
 \begin{description}
 	\item[Running:]	Die Activity ist im Vordergrund auf dem Bildschirm (zuoberst auf dem Activity-Stack	für die aktuelle Aufgabe)
-	\item[Paused] Die Activity hat den Fokus verloren, ist aber	immer noch sichtbar für den Benutzer
-	\item[Stopped] Die Activity ist komplett verdeckt von einer	andern Activity. Der Zustand der Activity bleibt jedoch erhalten
+	\item[Paused:] Die Activity hat den Fokus verloren, ist aber	immer noch sichtbar für den Benutzer
+	\item[Stopped:] Die Activity ist komplett verdeckt von einer	andern Activity. Der Zustand der Activity bleibt jedoch erhalten
 \end{description}
 Während den Zustandswechseln können folgende Callback-Methoden aufgerufen werden:
 \begin{itemize}
@@ -74,7 +74,7 @@ Während den Zustandswechseln können folgende Callback-Methoden aufgerufen werd
 	\item \texttt{onStop()}	
 	\item \texttt{onDestroy()}	
 \end{itemize}
-Es sollte immer die \texttt{super}-Methode überschrieben werden sonst gibt es eine Exception.
+Es sollte immer die \texttt{super}-Methode überschrieben werden, sonst gibt es eine Exception.
 
 \section{Android: ein Blick hinter die Kulissen}
 
@@ -100,4 +100,4 @@ Mit Android 5 wurde Dalvik komplett gestrichen. Neu kommt die Android-Runtime (A
 
 \subsection{Android Security Konzept}
 
-Android verwendet das Sandbox-Konzept d.h. jede laufende Android-Anwendung hat eigenen Prozess, Benutzer, DVM, Heap und Dateisystembereich. Zudem wird das Berechtigungssystem von Linux verwendet. Zudem werden Anwendungen zum Schutz gegen Code-Manipulationen signiert. Durch die im Manifest definierten Berechtigungen kann die Sandbox kontrolliert geöffnet werden.
+Android verwendet das Sandbox-Konzept d.h. jede laufende Android-Anwendung hat eigenen Prozess, Benutzer, DVM, Heap und Dateisystembereich. Es wird das Berechtigungssystem von Linux verwendet. Zudem werden Anwendungen zum Schutz gegen Code-Manipulationen signiert. Durch die im Manifest definierten Berechtigungen kann die Sandbox kontrolliert geöffnet werden.

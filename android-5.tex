@@ -2,7 +2,9 @@
 
 \section{Intents: Filter \& Auflösung}
 
-In Android gibt es explizite Intents oder implizite Intents. Explizite Intents werden über den Fully-Qualified-Classname der Ziel-Komponenten aufgerufen und wird typischerweise für App-interne Zwecke verwendet. Implizite Intents erlauben eine späte Bindung zur Laufzeit zwischen Code in verschiedenen Apps. Der Intent ist eine passive Datenstruktur (er macht nichts), welche eine abstrakte Beschreibung einer Aktion enthält. Das System kümmert sich um die Auslieferung des Intents an die richtige Komponente.
+In Android gibt es explizite Intents oder implizite Intents. Explizite Intents werden über den Fully-Qualified-Classname der Ziel-Komponenten aufgerufen und werden typischerweise für App-interne Zwecke verwendet. 
+
+Implizite Intents erlauben eine späte Bindung zur Laufzeit zwischen Code in verschiedenen Apps. Der Intent ist eine passive Datenstruktur (er macht nichts), welche eine abstrakte Beschreibung einer Aktion enthält. Das System kümmert sich um die Auslieferung des Intents an die richtige Komponente.
 Da bei impliziten Intents der Empfänger nicht von vornherein feststeht, muss der Intent mittels eines Intent-Filters ausgewählt werden. Das System eruiert mögliche Empfänger (Intent Auflösung), dabei kann es zu drei möglichen Fällen kommen:
 \begin{enumerate}
 	\item Ein Empfänger wurde gefunden $\leftarrow$ direkte Zustellung

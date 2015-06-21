@@ -2,7 +2,7 @@
 
 \section{Services}
 
-Mit einem Service kann man dem System mitteilen, dass eine bestimmte Arbeit im Hintergrund erledigt werden soll. Zudem lassen sich gewisse Funktionalitäten exportieren und so anderen Applikationen zur Verfügung gestellt. Ein Service läuft standardmässig nicht in einem separaten Thread (läuft im main-Thread) und auch nicht in einem eigenen Prozess (nur wenn so definiert). Deshalb sollte der Service einen Thread starten, um lang andauernde Operationen zu erledigen. Ein Service sollte benutzt werden wenn die Hintergrund-Aktivität weiterlaufen soll, auch wenn die Activity nicht mehr sichtbar ist (z.B. Musik läuft weiter). Soll die Aktivität beendet werden, wenn die Activity nicht mehr sichtbar ist sollte ein Worker-Thread verwendet werden (z.B. Animation soll stoppen). Es gibt gebundene Services und ungebundene Services, welche nachfolgend beschrieben werden.
+Mit einem Service kann man dem System mitteilen, dass eine bestimmte Arbeit im Hintergrund erledigt werden soll. Zudem lassen sich gewisse Funktionalitäten exportieren und so anderen Applikationen zur Verfügung stellen. Ein Service läuft standardmässig nicht in einem separaten Thread (läuft im main-Thread) und auch nicht in einem eigenen Prozess (nur wenn so definiert). Deshalb sollte der Service einen Thread starten, um lang andauernde Operationen zu erledigen. Ein Service sollte benutzt werden wenn die Hintergrund-Aktivität weiterlaufen soll, auch wenn die Activity nicht mehr sichtbar ist (z.B. Musik läuft weiter). Soll die Aktivität beendet werden, wenn die Activity nicht mehr sichtbar ist, sollte ein Worker-Thread verwendet werden (z.B. Animation soll stoppen). Es gibt gebundene Services und ungebundene Services, welche nachfolgend beschrieben werden.
 
 \subsection{Ungebundene Services}
 
@@ -71,7 +71,7 @@ Abbildung \ref{fig:gebundener-service} zeigt den Ablauf eines Service Bindings.
 
 \section{Broadcast Receiver}
 
-Broadcast sind Systemnachrichten welche vom Android-System verschickt werden (z.B. \texttt{BOOT\_COMPLETED}, \texttt{BATTERY\_CHANGED}). Alle Apps können Broadcasts mit via Intent verschicken (\texttt{sendBroadcast(intent)}). Broadcast-Intents werden an registrierte \texttt{BroadcastReceiver} (im gesamten System!) weitergeleitet. Ein \texttt{BroadcastReceiver} kann entweder dynamisch registriert oder im Manifest definiert werden. Ein \texttt{BroadcastReceiver} ist nur solange aktiv, wei die Bearbeitung der empfangenen Nachricht braucht (wird danach gelöscht und neu erzeugt \emph{on demand}). Deshalb sollte man im \texttt{BroadcastReceiver} keine AsyncTasks, kein Service und keine Dialoge zeigen. Abbildung \ref{fig:broadcast-receiver} zeigt wie \texttt{BroadcastReceiver} erzeugt werden können.
+Broadcast sind Systemnachrichten welche vom Android-System verschickt werden (z.B. \texttt{BOOT\_COMPLETED}, \texttt{BATTERY\_CHANGED}). Alle Apps können Broadcasts mit via Intent verschicken (\texttt{sendBroadcast(intent)}). Broadcast-Intents werden an registrierte \texttt{BroadcastReceiver} (im gesamten System!) weitergeleitet. Ein \texttt{BroadcastReceiver} kann entweder dynamisch registriert oder im Manifest definiert werden. Ein \texttt{BroadcastReceiver} ist nur solange aktiv, wei die Bearbeitung der empfangenen Nachricht braucht (wird danach gelöscht und neu erzeugt \emph{on demand}). Deshalb sollte man im \texttt{BroadcastReceiver} keine AsyncTasks, kein Service und keine Dialoge zeigen. Es können auch eigene Broadcast-Actions definiert werden. Abbildung \ref{fig:broadcast-receiver} zeigt wie \texttt{BroadcastReceiver} erzeugt werden können.
 
 \begin{figure}
 	\centering
@@ -92,11 +92,10 @@ Broadcast sind Systemnachrichten welche vom Android-System verschickt werden (z.
 	\caption{Broadcast Receiver erzeugen}
 	\label{fig:broadcast-receiver}
 \end{figure}
-Es können auch eigene Broadcast-Actions definiert werden.
 
 \section{Hinweise zum App-Design \& Usability}
 
-Android-Doku erläutert, wie Apps designed sein sollen, wie Widgets und Styles aussehen, wie einsetzen usw. Das Design ist ein iterativer Prozess der zusammen mit dem Kunden durchgeführt werden sollte. Prototypen helfen da sehr. Man kann ein Prototyp auf Papier oder mit einem SW-Tool erstellen und sollte mit diesem dann die App durchspielen. 
+Die Android-Doku erläutert, wie Apps designed sein sollen, wie Widgets und Styles aussehen, wie einsetzen usw. Das Design ist ein iterativer Prozess der zusammen mit dem Kunden durchgeführt werden sollte. Prototypen helfen da sehr. Man kann ein Prototyp auf Papier oder mit einem SW-Tool erstellen und sollte mit diesem dann die App durchspielen. 
 
 \section{Publikation von Apps}
 

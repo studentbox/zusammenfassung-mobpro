@@ -22,7 +22,7 @@ Abbildung \ref{fig:http-anfrage} zeigt zwei unterschiedliche Möglichkeiten eine
 	\label{fig:http-anfrage}
 \end{figure}
 
-Beide Klassen liefern einen \texttt{InputStream} zurück. Dieser kann mit einem \texttt{BufferedReader} zeilenweise ausgelesen werden. Mit der statischen Methode \texttt{BitMapFactory.decodeStream(in)} können die Bytes von verschiedenen Bildertypen (JPG, PNG, GIF) in ein \texttt{Bitmap}-Objekt. Dieses kann dann auf einer beliebigen \texttt{ImageView} als Input gesetzt werden.
+Beide Klassen liefern einen \texttt{InputStream} zurück. Dieser kann mit einem \texttt{BufferedReader} zeilenweise ausgelesen werden. Mit der statischen Methode \texttt{BitMapFactory.decodeStream(in)} können die Bytes von verschiedenen Bildertypen (JPG, PNG, GIF) in ein \texttt{Bitmap}-Objekt umgewandelt werden. Dieses Objekt kann dann auf einer beliebigen \texttt{ImageView} als Input gesetzt werden.
 
 Daten von Webservices werden oft im JSON oder im XML Format ausgeliefert. JSON besteht aus Arrays und Objekten. Ein Array ist eine Sequenz von Elementen (\texttt{[]}). Ein Objekt ist ein Schlüssel-Werte-Paar (\texttt{{}}). Diese Elemente können beliebig geschachtelt werden. Abbildung \ref{fig:json} zeigt wie JSON geparst wird.
 
@@ -60,8 +60,8 @@ XML besteht aus Elementen (\texttt{<>}) welche Attribute besitzen können. Bei X
 
 \subsection{Kommunikation über Sockets (zustandsbehaftet)}
 
-Die Kommunikation über Sockets ist zustandsbehaftet und basiert auf TCP/IP. Für die Socketkommunikation existiert kein Protokoll (Sache der Teilnehmer). Deshalb wird über Datenströme bidirektional kommuniziert. Die Verbindung zwischen Client und Server bleibt bestehend. Dadurch ist es möglich dass der Server Push-Nachrichten an die Clients senden kann. Diese Art der Kommunikation hat aber auch Nachteile. So hat der Server evtl. sehr viele offene Verbindungen und jede offene Verbindung braucht einen Thread.
-Der Server bietet ein Hauptsocket an auf welches alle Clients verbinden. Sobald ein Client eine Verbindung herstellen möchte, erstellt der Server ein neues Client-Socket und der Hauptsocket ist wieder frei für neue Verbindungsanfragen. Auf beiden Seiten kann das Socket beliebig (Timeout\dots) lang bestehen bleiben. Der Thread legt sich schlafen und wacht bei einem \emph{Incoming Call} wieder auf.
+Die Kommunikation über Sockets ist zustandsbehaftet und basiert auf TCP/IP. Für die Socketkommunikation existiert kein Protokoll (Sache der Teilnehmer). Bei Sockets wird über Datenströme bidirektional kommuniziert. Die Verbindung zwischen Client und Server bleibt bestehend. Dadurch ist es möglich dass der Server Push-Nachrichten an die Clients senden kann. Diese Art der Kommunikation hat aber auch Nachteile. So hat der Server evtl. sehr viele offene Verbindungen und jede offene Verbindung braucht einen Thread.
+Der Server bietet ein Hauptsocket an auf welches alle Clients verbinden. Sobald ein Client eine Verbindung herstellen möchte, erstellt der Server ein neues Client-Socket und der Hauptsocket ist wieder frei für neue Verbindungsanfragen. Auf beiden Seiten kann das Socket beliebig (Timeout\dots) lang bestehen bleiben. Der Thread bei den Sockets legt sich schlafen und wacht bei einem \emph{Incoming Call} wieder auf.
 
 \section{Nebenläufigkeit (Concurrency)}
 
@@ -75,7 +75,7 @@ Abbildung \ref{fig:asynctask} zeigt die Klasse \texttt{AsyncTask} im Überblick.
 \begin{itemize}
 	\item \texttt{ParamTyp} = Typ der Parameter-Elemente, z.B. \texttt{URL}
 	\item \texttt{ProgressTyp} = Typ der Zwischenresultate, z.B. \texttt{String} (\texttt{Void} falls nicht benutzt)
-	\texttt{ResultTyp} = Typ des Resultats, z.B. \texttt{Integer} (ggf. \texttt{Void} falls nicht benutzt)
+	\item \texttt{ResultTyp} = Typ des Resultats, z.B. \texttt{Integer} (ggf. \texttt{Void} falls nicht benutzt)
 \end{itemize}
 Zusätzlich müssen folgende drei Methoden implementiert werden:
 \begin{itemize}
