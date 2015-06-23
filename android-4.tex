@@ -24,7 +24,7 @@ Abbildung \ref{fig:http-anfrage} zeigt zwei unterschiedliche Möglichkeiten eine
 
 Beide Klassen liefern einen \texttt{InputStream} zurück. Dieser kann mit einem \texttt{BufferedReader} zeilenweise ausgelesen werden. Mit der statischen Methode \texttt{BitMapFactory.decodeStream(in)} können die Bytes von verschiedenen Bildertypen (JPG, PNG, GIF) in ein \texttt{Bitmap}-Objekt umgewandelt werden. Dieses Objekt kann dann auf einer beliebigen \texttt{ImageView} als Input gesetzt werden.
 
-Daten von Webservices werden oft im JSON oder im XML Format ausgeliefert. JSON besteht aus Arrays und Objekten. Ein Array ist eine Sequenz von Elementen (\texttt{[]}). Ein Objekt ist ein Schlüssel-Werte-Paar (\texttt{{}}). Diese Elemente können beliebig geschachtelt werden. Abbildung \ref{fig:json} zeigt wie JSON geparst wird.
+Daten von Webservices werden oft im JSON oder im XML Format ausgeliefert. JSON besteht aus Arrays und Objekten. Ein Array ist eine Sequenz von Elementen (\texttt{[]}). Ein Objekt ist ein Schlüssel-Werte-Paar (\texttt{\{\}}). Diese Elemente können beliebig geschachtelt werden. Abbildung \ref{fig:json} zeigt wie JSON geparst wird.
 
 \begin{figure}
 	\centering
